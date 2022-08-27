@@ -40,7 +40,8 @@ export default {
                 api: [],
                 turns: [],
                 allDates: [],
-                turnsGrouped: []
+                turnsGrouped: [],
+                deletedTurn: ''
                 
             }
         },
@@ -53,6 +54,10 @@ export default {
             console.log(this.api.data)
             this.turns = this.api.data
 
+            if(this.allDates.length > 0){
+                this.allDates = []
+            }
+
             for(let i = 0; i < this.turns.length; i++ ){
                 if(i !== this.turns.length -1){
                     if(this.turns[i].date !== this.turns[i + 1].date){
@@ -63,7 +68,27 @@ export default {
             }
         },
 
+        deletedTurn: async function(){
+            if(this.deletedTurn !== ''){
+                console.log('Se eleminof')
+                this.turns = []
+                this.api = await axios.get('https://crud-dance-api.herokuapp.com/api/turnos')
+            }
+            this.deletedTurn = ''
+        },
+
+        newTurn: async function(){
+            console.log(this.newTurn)
+            this.turns = []
+            if(this.newTurn !== ''){
+                this.api = await axios.get('https://crud-dance-api.herokuapp.com/api/turnos')
+            }
+        },
+
         allDates: function(){
+            if(this.turnsGrouped.length > 0){
+                this.turnsGrouped = []
+            }
             this.allDates.forEach(el => {
                 let date = el
                 let turnsInTheSameDate = this.turns.filter(element => element.date === el)
@@ -86,6 +111,7 @@ export default {
             e.preventDefault()
             axios.delete('https://crud-dance-api.herokuapp.com/api/turnos/' + e.target.id)
             alert('Has eliminado el turno de ' + e.target.name)
+            this.deletedTurn = 'Turno eliminado'
         },
 
         sortArrayTimes: function(x, y){

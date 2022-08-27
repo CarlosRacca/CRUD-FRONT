@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <h1 id="title">DANZA DE LA MUERTE</h1>
-  
     <div id="header">
       <AllButtons @showModalSelect="showModalSelectFunction" @showModalDeath="showModalDeathFunction"/>
     </div>
+    <h1 id="title">DANZA DE LA MUERTE</h1>
+  
     <div id="main-container">
       <button v-if="isDeath" @click="finishDeleting">Terminar de eliminar</button>
       <ReservedTurns :isDeath="this.isDeath" :newTurn="this.newTurn"/>
@@ -52,6 +52,9 @@ export default {
       this.newTurn = 'Nuevo turno'
 
     },
+    clean: function(){
+      this.newTurn = ''
+    },
     finishDeleting:function(){
       this.isDeath = false
     },
@@ -70,6 +73,12 @@ export default {
     showModalDeathFunction: function(){
       this.showModalDeath = true
     }
+  },
+  watch:{
+    newTurn: function(){
+      setTimeout(this.clean,1000);
+    }
+
   },
   components: {
     //HelloWorld,

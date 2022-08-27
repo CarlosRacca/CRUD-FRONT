@@ -47,8 +47,9 @@ export default {
   },
   methods:{
     submitTurn: function(turn){
-      alert(`Has seleccionado el turno del ${turn.date} a las ${turn.time}`)
-      this.showModalSelect = false
+      if(!confirm(`Has seleccionado el turno del ${turn.date} a las ${turn.time}. Deseas reservar un turno mas?`)){
+        this.showModalSelect = false
+      }
       this.newTurn = 'Nuevo turno'
 
     },

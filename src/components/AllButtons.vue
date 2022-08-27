@@ -5,7 +5,6 @@
         <button @click="showModalDeath">Eliminar un turno</button>
     </div>
 </template>
-
 <script>
 export default {
     name: 'AllButtons',

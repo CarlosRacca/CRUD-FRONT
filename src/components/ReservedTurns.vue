@@ -2,7 +2,7 @@
     <div id="availableTurns">
         <br>
         
-        Los turnos ya reservados para bailar con la muerte son los siguientes:
+        Los turnos ya reservados para bailar con la muerte son:
         <table class="table">
             <thead class="tableHead">
                 <th v-for="(element) in this.turnsGrouped"
@@ -52,7 +52,6 @@ export default {
         api: function (){
             console.log(this.api.data)
             this.turns = this.api.data
-            this.turns.sort(this.sortArray)
 
             for(let i = 0; i < this.turns.length; i++ ){
                 if(i !== this.turns.length -1){
@@ -83,13 +82,6 @@ export default {
         }
     },
     methods:{
-        sortArray: function(x, y){
-            if (x.date < y.date) {return -1;}
-            if (x.date > y.date) {return 1;}
-
-            return 0;
-        },
-
         handleDelete: function(e){
             e.preventDefault()
             axios.delete('https://crud-dance-api.herokuapp.com/api/turnos/' + e.target.id)

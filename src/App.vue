@@ -93,15 +93,23 @@ export default {
 
 <style>
 #app {
+  
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  /* margin-top: 60px; */
+  background-image: url('https://fondosmil.com/fondo/63506.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height: 100vh;
 }
 
 #title {
-  background-color: darksalmon;
+  color: white;
+  background-color: rgb(228, 148, 121, 0.4);
 }
 </style>

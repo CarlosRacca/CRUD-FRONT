@@ -24,6 +24,7 @@ export default {
 
 <style>
     #firstButtons {
-        background-color: aqua;
+        color: white;
+        background-color: rgb(36, 147, 147, 0.5);
     }
 </style>

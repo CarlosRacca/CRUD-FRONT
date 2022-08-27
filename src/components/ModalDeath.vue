@@ -46,6 +46,7 @@ export default {
 
 <style>
     #modalDeath {
-        background-color: brown;
+        color: white;
+        background-color: rgb(165, 42, 42, 0.3);
     }
 </style>

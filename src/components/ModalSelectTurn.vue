@@ -99,6 +99,7 @@ export default {
 
 <style>
     #modalSelect {
-        background-color: cornflowerblue;
+        color: white;
+        background-color: rgb(100, 149, 237, 0.4);
     }
 </style>

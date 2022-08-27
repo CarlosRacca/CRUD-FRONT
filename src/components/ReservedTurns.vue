@@ -127,6 +127,7 @@ export default {
 
 <style>
     #availableTurns {
-        background-color: rgb(122, 153, 122);
+        color: white;
+        background-color: rgb(122, 153, 122, 0.4);
     }
 </style>

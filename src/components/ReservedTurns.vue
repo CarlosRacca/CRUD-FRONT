@@ -1,9 +1,7 @@
 <template>
     <div id="availableTurns">
-        <br>
-        
-        Los turnos ya reservados para bailar con la muerte son:
-        <table class="table">
+        <h3 class="titleTurns">Los turnos ya reservados para bailar con la muerte son:</h3>
+        <table class="table1">
             <thead class="tableHead">
                 <th v-for="(element) in this.turnsGrouped"
                     :key="element.id">
@@ -13,7 +11,7 @@
                     </th>
             </thead>
             <tbody class="tableBody">
-                <td v-for="(element) in this.turnsGrouped"
+                <td  v-for="(element) in this.turnsGrouped"
                     :key="element.id">
                     <tr v-for="(el) in element.turns"
                     :key="el.id">
@@ -125,9 +123,60 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     #availableTurns {
-        color: white;
-        background-color: rgb(122, 153, 122, 0.4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        text-align: left;
+        margin: 10px;
+        padding-bottom: 10px;
     }
+    td {
+        color: black;
+        text-align: left;
+        background-color: rgb(208, 205, 205, 0.4);
+        border: solid black 2px;
+        padding: 5px;
+    }
+    th {
+        background-color: rgb(208, 205, 205, 0.4);
+        border: solid black 2px;
+        align-items: center;
+        padding: 5px;
+    }
+    tr {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    button{
+        color: white;
+        background-color: rgb(113, 27, 27);
+        border: none;
+        border-radius: 5px;
+        margin: 4px;
+        margin-top: 0px;
+        box-shadow: black 2px 1px;
+        cursor: pointer;
+
+    }
+    button:hover{
+        background-color: rgb(26, 26, 26);
+        box-shadow: black 0px 0px;
+    }
+
+    h3{
+        margin-top: -40px;
+        color: black;
+        text-shadow: brown 1px 1px;
+        font-size: 30px;
+        /* background-color: rgb(252, 252, 252, 0.2); */
+        padding: 20px;
+        padding-bottom: 0px;
+    }
+
+    
+    
 </style>

@@ -1,14 +1,15 @@
 <template>
     <div id="modalSelect">
-        <br>
-        Seleccione el turno que desea:
-        <br>
-        <br>
+        <h3>
+            Seleccione el turno que desea:
+        </h3>
+        
+
         <form method="POST" v-on:submit.prevent="handleSubmit">
             <label for="">Nombre:</label>
             <input name="customer" type="text" v-model="form.customer">
             <label for="">Fecha:</label>
-            <input name="date" type="date" v-model="form.date">
+            <input name="date" type="date" v-model="form.date" id="datefield" min="">
             <label for="">Hora:</label>
             <select name="time" type="time" v-model="form.time">
                 <option value="08:00 hs">08:00 hs</option>
@@ -45,6 +46,7 @@ export default {
     data() {
             return {
                 api: [],
+                today: '',
                 form: {
                     date: '',
                     time: '',
@@ -54,7 +56,23 @@ export default {
         },
     async mounted () {
         this.api = await axios.get('https://crud-dance-api.herokuapp.com/api/turnos')
-        
+        this.today = new Date();
+
+        let today = new Date();
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1; //January is 0!
+        let yyyy = today.getFullYear();
+
+        if (dd < 10) {
+        dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+        mm = '0' + mm;
+        } 
+            
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("datefield").setAttribute("min", today);
     },
     watch:{
         'form.date': function (){
@@ -97,9 +115,64 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     #modalSelect {
+        background-color: rgba(3, 5, 7, 0.8);
+        font-size: 20px;
         color: white;
-        background-color: rgb(100, 149, 237, 0.4);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    input {
+        background-color: rgb(65, 21, 21, 0.8);
+        border-radius: 4px;
+        border: none;
+        color: white;
+        font-family: fantasy;
+        margin: 10px;
+        width: 200px;
+        height: 30px;
+        text-align: center;
+        padding-top: 6px;
+    }
+
+    select {
+        background-color: rgb(65, 21, 21, 0.8);
+        border-radius: 4px;
+        border: none;
+        color: white;
+        font-family: fantasy;
+        margin: 10px;
+        width: 200px;
+        height: 36px;
+        text-align: center;
+        padding-top: 6px;
+    }
+
+    button{
+        cursor: pointer;
+        color: white;
+        background-color: rgba(41, 3, 3, 0.8);
+        border: none;
+        border-radius: 5px;
+        margin: 10px;
+        box-shadow: black 3px 3px;
+        height: 30px;
+        width: 130px;
+        padding-top: 6px;
+        font-size: 15px;
+        font-family: fantasy;
+
+    }
+    button:hover{
+        background-color: rgb(26, 26, 26);
+        box-shadow: black 0px 0px;
     }
 </style>

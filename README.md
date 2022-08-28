@@ -1,24 +1,16 @@
-# danza-vue
+# Danza de la Muerte
 
-## Project setup
-```
-npm install
-```
+Este es un proyecto desarrollado con Vue.js en su totalidad.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+Consumiendo una API previamente creada en Laravel.
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Para eliminar un turno, solo la muerte puede hacer esto, por lo que el sistema los pone a prueba.
 
-### Lints and fixes files
-```
-npm run lint
-```
+Haciendo una pregunta que solo la muerte podra responder.
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# Para testear la aplicación
+
+Link: https://crud-front-henna.vercel.app
+
+La respuesta a esa pregunta es: "Espero que la haya disfrutado"
+

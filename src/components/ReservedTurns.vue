@@ -49,7 +49,6 @@ export default {
     },
     watch:{
         api: function (){
-            console.log(this.api.data)
             this.turns = this.api.data
 
             if(this.allDates.length > 0){
@@ -68,7 +67,6 @@ export default {
 
         deletedTurn: async function(){
             if(this.deletedTurn !== ''){
-                console.log('Se eleminof')
                 this.turns = []
                 this.api = await axios.get('https://crud-dance-api.herokuapp.com/api/turnos')
             }
@@ -76,7 +74,6 @@ export default {
         },
 
         newTurn: async function(){
-            console.log(this.newTurn)
             this.turns = []
             if(this.newTurn !== ''){
                 this.api = await axios.get('https://crud-dance-api.herokuapp.com/api/turnos')
@@ -107,9 +104,11 @@ export default {
     methods:{
         handleDelete: function(e){
             e.preventDefault()
-            axios.delete('https://crud-dance-api.herokuapp.com/api/turnos/' + e.target.id)
-            alert('Has eliminado el turno de ' + e.target.name)
-            this.deletedTurn = 'Turno eliminado'
+            if(confirm(`Esta segura que desea eliminar el turno de ${e.target.name}?`)){    
+                axios.delete('https://crud-dance-api.herokuapp.com/api/turnos/' + e.target.id)
+                alert('Has eliminado el turno de ' + e.target.name)
+                this.deletedTurn = 'Turno eliminado'
+            }
         },
 
         sortArrayTimes: function(x, y){

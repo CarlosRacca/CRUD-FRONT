@@ -88,14 +88,14 @@ export default {
     methods:{
         handleSubmit: function(){
             let repeated = this.api.data.filter(el => el.date === this.form.date && el.time === this.form.time)
-            console.log(repeated)
+            
             if(repeated.length > 0){
                 alert('Este turno ya esta ocupado, elija otro por favor!')
             }else{
                 let turn = this.form
                 axios.post('https://crud-dance-api.herokuapp.com/api/turnos', this.form).then(
                     response => {
-                        console.log(response)
+                        
                         if(response.statusText === "Created"){
                             this.$emit('submitTurn', turn)
 
